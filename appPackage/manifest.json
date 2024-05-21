@@ -1,0 +1,71 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.16/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.16",
+  "version": "1.0.0",
+  "id": "1df914b5-2279-44f3-a4d8-f453e14d4e25",
+  "packageName": "com.package.name",
+  "name": {
+    "short": "CardsBot",
+    "full": "NuGet Search Bot"
+  },
+  "developer": {
+    "name": "Microsoft",
+    "mpnId": "",
+    "websiteUrl": "https://microsoft.com",
+    "privacyUrl": "https://privacy.microsoft.com/privacystatement",
+    "termsOfUseUrl": "https://www.microsoft.com/legal/terms-of-use"
+  },
+  "description": {
+    "short": "Message extension that searches NuGet",
+    "full": "Example message extension that searches NuGet"
+  },
+  "icons": {
+    "outline": "outline.png",
+    "color": "color.png"
+  },
+  "accentColor": "#FFFFFF",
+  "staticTabs": [
+    {
+      "entityId": "conversations",
+      "scopes": [ "personal" ]
+    },
+    {
+      "entityId": "about",
+      "scopes": [ "personal" ]
+    }
+  ],
+  "bots": [
+    {
+      "botId": "1df914b5-2279-44f3-a4d8-f453e14d4e25",
+      "scopes": [ "personal", "team", "groupChat" ],
+      "isNotificationOnly": false,
+      "supportsCalling": false,
+      "supportsVideo": false,
+      "supportsFiles": false
+    }
+  ],
+  "validDomains": [
+    "*.usw2.devtunnels.ms"
+  ],
+  "composeExtensions": [
+    {
+      "botId": "1df914b5-2279-44f3-a4d8-f453e14d4e25",
+      "canUpdateConfiguration": true,
+      "commands": [
+        {
+          "id": "searchCmd",
+          "description": "NuGet Search",
+          "title": "Search",
+          "initialRun": false,
+          "parameters": [
+            {
+              "name": "queryText",
+              "description": "Enter your search query",
+              "title": "Query"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

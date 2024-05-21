@@ -1,0 +1,134 @@
+{
+  "type": "AdaptiveCard",
+  "body": [
+    {
+      "type": "Container",
+      "verticalContentAlignment": "center",
+      "items": [
+        {
+          "type": "ColumnSet",
+          "columns": [
+            {
+              "type": "Column",
+              "items": [
+                {
+                  "type": "Image",
+                  "url": "https://picsum.photos/300/300?image=112",
+                  "msTeams": {
+                    "allowExpand": true
+                  }
+                },
+                {
+                  "type": "Image",
+                  "url": "https://lauraeoliver.wordpress.com/wp-content/uploads/2015/03/gifex1.gif",
+                  "msTeams": {
+                    "allowExpand": true
+                  }
+                }
+              ]
+            },
+            {
+              "type": "Column",
+              "items": [
+                {
+                  "type": "Image",
+                  "url": "https://picsum.photos/300/300?image=110",
+                  "msTeams": {
+                    "allowExpand": true
+                  }
+                },
+                {
+                  "type": "Image",
+                  "url": "https://picsum.photos/300/300?image=114",
+                  "msTeams": {
+                    "allowExpand": true
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "TextBlock",
+          "text": "\"${PromptText}\""
+        },
+        {
+          "type": "ColumnSet",
+          "columns": [
+            {
+              "type": "Column",
+              "verticalContentAlignment": "bottom",
+              "items": [
+                {
+                  "type": "ColumnSet",
+                  "horizontalAlignment": "left",
+                  "columns": [
+                    {
+                      "type": "Column",
+                      "items": [
+                        {
+                          "type": "Image",
+                          "url": "https://statics.teams.cdn.office.net/app-assets/ring0/1a69c0fd-6ec8-488e-8900-ff3a2fcf5f51/1a69c0fd-6ec8-488e-8900-ff3a2fcf5f51_smallImage.png?v=1.0.7",
+                          "height": "16px"
+                        }
+                      ],
+                      "width": "auto"
+                    },
+                    {
+                      "type": "Column",
+                      "items": [
+                        {
+                          "type": "TextBlock",
+                          "text": "Designer"
+                        }
+                      ],
+                      "width": "auto",
+                      "spacing": "small"
+                    },
+                    {
+                      "type": "Column",
+                      "items": [
+                        {
+                          "type": "TextBlock",
+                          "text": "PREVIEW",
+                          "isSubtle": true,
+                          "size": "small"
+                        }
+                      ],
+                      "spacing": "small"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Column",
+              "verticalContentAlignment": "bottom",
+              "items": [
+                {
+                  "type": "ColumnSet",
+                  "horizontalAlignment": "right",
+                  "columns": [
+                    {
+                      "type": "Column",
+                      "items": [
+                        {
+                          "type": "TextBlock",
+                          "horizontalAlignment": "right",
+                          "text": "Powered by DALL·E 3",
+                          "size": "Small"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.2"
+}
