@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using SearchCommand.Model;
 using System.Collections.Specialized;
+using System.Security.Principal;
 using System.Web;
 
 namespace SearchCommand
@@ -19,7 +20,7 @@ namespace SearchCommand
     public class ActivityHandlers
     {
         private readonly HttpClient _httpClient;
-        private readonly string _packageCardFilePath = Path.Combine(".", "Resources", "PackageCard.json");
+        private static string _packageCardFilePath = Path.Combine(".", "Resources", "PackageCard.json");
         private static string _designerCardFilePath = Path.Combine(".", "Resources", "DesignerCard.json");
 
         public ActivityHandlers(IHttpClientFactory httpClientFactory)
@@ -103,6 +104,13 @@ namespace SearchCommand
                     });
                     message = await SendAdaptiveCard(turnContext, cardContent, cancellationToken);
                     break;
+                case "nugetjsoncard":
+                    string text = "Json";
+                    Package[] packages = await SearchPackages(text, 1, cancellationToken);
+                    string cardTemplateJson = await File.ReadAllTextAsync(_packageCardFilePath, cancellationToken)!;
+                    string cardContentJson = new AdaptiveCardTemplate(cardTemplateJson).Expand(packages[0]);
+                    message = await SendAdaptiveCard(turnContext, cardContentJson, cancellationToken);
+                    break;
                 default:
                     await turnContext.SendActivityAsync($"Your prompt {turnContext.Activity.Text} did not match any actions!", cancellationToken: cancellationToken);
                     break;
@@ -118,11 +126,13 @@ namespace SearchCommand
                 Content = JsonConvert.DeserializeObject(cardContent),
             };
             message = MessageFactory.Attachment(adaptiveCardAttachment);
+            AIEntity aiEntity = new();
+            message.Entities = new[] { aiEntity };
             await turnContext.SendActivityAsync(message!, cancellationToken: cancellationToken);
             return message;
         }
 
-        private async Task<Package[]> SearchPackages(string text, int size, CancellationToken cancellationToken)
+        private static async Task<Package[]> SearchPackages(string text, int size, CancellationToken cancellationToken)
         {
             // Call NuGet Search API
             NameValueCollection query = HttpUtility.ParseQueryString(string.Empty);
